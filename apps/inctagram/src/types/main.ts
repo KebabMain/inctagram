@@ -1,5 +1,3 @@
-import { IsEnum, IsNotEmpty } from 'class-validator';
-
 export type PaginationAndSortingTypes = {
   pageNumber: number;
   pageSize: number;
@@ -21,19 +19,7 @@ export type ReturnPaginatedAndSortedWithItemsTypes = {
   totalCount: number;
 };
 
-export enum LikeStatusTypes {
-  NONE = 'None',
-  LIKE = 'Like',
-  DISLIKE = 'Dislike',
-}
-
 export type ResponseErrorTypes = {
   field: string;
   message: string;
 };
-
-export class LikeStatusDTO {
-  @IsNotEmpty()
-  @IsEnum(LikeStatusTypes)
-  likeStatus: LikeStatusTypes;
-}
