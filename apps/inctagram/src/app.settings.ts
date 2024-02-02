@@ -3,11 +3,11 @@ import {
   INestApplication,
   ValidationPipe,
 } from '@nestjs/common';
-import cookieParser from 'cookie-parser';
+import * as cookieParser from 'cookie-parser';
 import { useContainer } from 'class-validator';
 import { AppModule } from './app.module';
 import { ResponseErrorTypes } from './types/main';
-import { HttpExceptionFilter } from './http-exception.filter';
+import { HttpExceptionFilter } from './filters/http-exception.filter';
 
 export const appSettings = (app: INestApplication) => {
   app.use(cookieParser());
@@ -36,4 +36,5 @@ export const appSettings = (app: INestApplication) => {
   );
   app.enableCors();
   app.useGlobalFilters(new HttpExceptionFilter());
+  // app.useGlobalFilters(new PrismaClientExceptionFilter(httpAdapter));
 };
