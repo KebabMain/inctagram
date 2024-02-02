@@ -4,7 +4,7 @@
   "sourceRoot": "apps/inctagram/src",
   "compilerOptions": {
     "deleteOutDir": true,
-    "webpack": false,
+    "webpack": true,
     "tsConfigPath": "apps/inctagram/tsconfig.app.json"
   },
   "monorepo": true,

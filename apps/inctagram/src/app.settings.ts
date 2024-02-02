@@ -8,11 +8,8 @@ import { useContainer } from 'class-validator';
 import { AppModule } from './app.module';
 import { ResponseErrorTypes } from './types/main';
 import { HttpExceptionFilter } from './filters/http-exception.filter';
-import { PrismaClientExceptionFilter } from './filters/prisma-client-exception.filter';
-import { HttpAdapterHost } from '@nestjs/core';
 
 export const appSettings = (app: INestApplication) => {
-  const { httpAdapter } = app.get(HttpAdapterHost);
   app.use(cookieParser());
   useContainer(app.select(AppModule), { fallbackOnErrors: true });
 
@@ -39,5 +36,5 @@ export const appSettings = (app: INestApplication) => {
   );
   app.enableCors();
   app.useGlobalFilters(new HttpExceptionFilter());
-  app.useGlobalFilters(new PrismaClientExceptionFilter(httpAdapter));
+  // app.useGlobalFilters(new PrismaClientExceptionFilter(httpAdapter));
 };
